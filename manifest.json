@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "JSON and JSONLD Patcher",
+  "version": "0.1",
+  "minimum_chrome_version": "23",
+  "icons": {
+    "16": "json-icon-16.png",
+    "128": "json-icon-128.png"
+  },
+  "app": {
+    "background": {
+      "scripts": ["js/main.js"]
+    }
+  }
+}
