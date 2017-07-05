@@ -1,0 +1,4 @@
+.scroll-col-6 {
+    max-height:600px;
+    overflow-y: scroll;
+}

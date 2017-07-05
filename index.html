@@ -6,27 +6,30 @@
     <!-- Bootstrap core CSS -->
     <link href="bootstrap-4.0.0-alpha6/css/bootstrap.min.css" rel="stylesheet">
     <link href="theter-1.3.3/css/tether.min.css" rel="stylesheet">
+    <link href="css/jsonls-patch-extension.css" rel="stylesheet">
 </head>
 <body>
 <!-- Begin page content -->
 <div class="container">
-    <div class="row">
-        <div class="col-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ornare porttitor turpis ac semper. Suspendisse ultricies, lorem in gravida accumsan, diam lacus tempor dui, non iaculis nisl turpis ac lorem. Duis ullamcorper at tellus vel scelerisque. Vestibulum in aliquam dolor. Praesent ultrices elementum vehicula. Nam quis enim id eros euismod egestas eu quis velit. Cras suscipit tincidunt lectus, ut faucibus leo. Sed urna risus, congue et imperdiet vel, ornare sed dui. In vitae fringilla nulla. Curabitur maximus imperdiet ipsum. Nam rhoncus quam non turpis egestas porta. Praesent a pretium magna, sodales eleifend magna. Donec lobortis turpis ut odio blandit, sit amet sodales augue sollicitudin.
-
-            Vestibulum at est semper, malesuada enim sed, efficitur dui. Suspendisse placerat massa ut cursus efficitur. Ut eu auctor arcu, eget viverra arcu. In quis imperdiet turpis, vitae auctor diam. Suspendisse elementum imperdiet tortor, ullamcorper ullamcorper nisi iaculis at. Nullam varius volutpat velit, eget ultricies orci ullamcorper ut. Quisque eu sapien nec est hendrerit bibendum. Vestibulum lobortis convallis metus, varius consequat tellus feugiat id.
-        </div>
-        <div class="col-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ornare porttitor turpis ac semper. Suspendisse ultricies, lorem in gravida accumsan, diam lacus tempor dui, non iaculis nisl turpis ac lorem. Duis ullamcorper at tellus vel scelerisque. Vestibulum in aliquam dolor. Praesent ultrices elementum vehicula. Nam quis enim id eros euismod egestas eu quis velit. Cras suscipit tincidunt lectus, ut faucibus leo. Sed urna risus, congue et imperdiet vel, ornare sed dui. In vitae fringilla nulla. Curabitur maximus imperdiet ipsum. Nam rhoncus quam non turpis egestas porta. Praesent a pretium magna, sodales eleifend magna. Donec lobortis turpis ut odio blandit, sit amet sodales augue sollicitudin.
-
-            Vestibulum at est semper, malesuada enim sed, efficitur dui. Suspendisse placerat massa ut cursus efficitur. Ut eu auctor arcu, eget viverra arcu. In quis imperdiet turpis, vitae auctor diam. Suspendisse elementum imperdiet tortor, ullamcorper ullamcorper nisi iaculis at. Nullam varius volutpat velit, eget ultricies orci ullamcorper ut. Quisque eu sapien nec est hendrerit bibendum. Vestibulum lobortis convallis metus, varius consequat tellus feugiat id.
-
-        </div>
-        <div class="col-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ornare porttitor turpis ac semper. Suspendisse ultricies, lorem in gravida accumsan, diam lacus tempor dui, non iaculis nisl turpis ac lorem. Duis ullamcorper at tellus vel scelerisque. Vestibulum in aliquam dolor. Praesent ultrices elementum vehicula. Nam quis enim id eros euismod egestas eu quis velit. Cras suscipit tincidunt lectus, ut faucibus leo. Sed urna risus, congue et imperdiet vel, ornare sed dui. In vitae fringilla nulla. Curabitur maximus imperdiet ipsum. Nam rhoncus quam non turpis egestas porta. Praesent a pretium magna, sodales eleifend magna. Donec lobortis turpis ut odio blandit, sit amet sodales augue sollicitudin.
-
-            Vestibulum at est semper, malesuada enim sed, efficitur dui. Suspendisse placerat massa ut cursus efficitur. Ut eu auctor arcu, eget viverra arcu. In quis imperdiet turpis, vitae auctor diam. Suspendisse elementum imperdiet tortor, ullamcorper ullamcorper nisi iaculis at. Nullam varius volutpat velit, eget ultricies orci ullamcorper ut. Quisque eu sapien nec est hendrerit bibendum. Vestibulum lobortis convallis metus, varius consequat tellus feugiat id.
-
+<div class="row">
+    <div class="col-6 scroll-col-6">
+        <div class="form-group" id="form-group-textarea-1">
+            <label for="textarea-json-object-1">JSON object 1 :</label>
+            <textarea class="form-control" rows="25" id="textarea-json-object-1"></textarea>
         </div>
     </div>
+    <div class="col-6 scroll-col-6">
+        <div class="form-group" id="form-group-textarea-2">
+            <label for="textarea-json-object-1">JSON object 2 :</label>
+            <textarea class="form-control" rows="25" id="textarea-json-object-2"></textarea>
+        </div>
+    </div>
+    <div class="col-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ornare porttitor turpis ac semper. Suspendisse ultricies, lorem in gravida accumsan, diam lacus tempor dui, non iaculis nisl turpis ac lorem. Duis ullamcorper at tellus vel scelerisque. Vestibulum in aliquam dolor. Praesent ultrices elementum vehicula. Nam quis enim id eros euismod egestas eu quis velit. Cras suscipit tincidunt lectus, ut faucibus leo. Sed urna risus, congue et imperdiet vel, ornare sed dui. In vitae fringilla nulla. Curabitur maximus imperdiet ipsum. Nam rhoncus quam non turpis egestas porta. Praesent a pretium magna, sodales eleifend magna. Donec lobortis turpis ut odio blandit, sit amet sodales augue sollicitudin.
+
+        Vestibulum at est semper, malesuada enim sed, efficitur dui. Suspendisse placerat massa ut cursus efficitur. Ut eu auctor arcu, eget viverra arcu. In quis imperdiet turpis, vitae auctor diam. Suspendisse elementum imperdiet tortor, ullamcorper ullamcorper nisi iaculis at. Nullam varius volutpat velit, eget ultricies orci ullamcorper ut. Quisque eu sapien nec est hendrerit bibendum. Vestibulum lobortis convallis metus, varius consequat tellus feugiat id.
+
+    </div>
+</div>
 </div>
 <footer class="footer">
     <div class="container">
