@@ -16,4 +16,9 @@ chrome.app.runtime.onLaunched.addListener(function() {
             minHeight: 400
         }
     });
+
+    $("#href-github").on("click", function(){
+        chrome.tabs.create({url: $(this).attr('href')});
+        return false;
+    });
 });

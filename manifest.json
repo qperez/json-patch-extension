@@ -1,6 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "JSON and JSONLD Patcher",
+  "name": "JSON patch extension",
+  "short_name": "JSON Patcher",
+  "author": "Quentin PEREZ",
+  "homepage_url": "https://github.com/qperez/json-patch-extension",
+  "description": "JSON patch extension is a chrome extension. It is a tool to help developers to do JSON Patch more easily.",
   "version": "0.1",
   "minimum_chrome_version": "23",
   "icons": {
