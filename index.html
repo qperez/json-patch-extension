@@ -10,30 +10,72 @@
     <link href="font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" >
 </head>
 <body>
-<!-- Begin page content -->
 <div class="container">
-    <div class="row">
-        <div class="col-6">
-            <div class="form-group" id="form-group-textarea-1">
-                <label for="textarea-json-object-1">JSON object 1 :</label>
-                <textarea class="form-control" rows="17" id="textarea-json-object-1"></textarea>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" href="#patcher" role="tab" data-toggle="tab">Patch diff</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#validator" role="tab" data-toggle="tab">Patch validation</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#about" role="tab" data-toggle="tab">About</a>
+        </li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="patcher">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group" id="form-group-textarea-1">
+                        <label for="textarea-json-object-1">JSON object 1 :</label>
+                        <textarea class="form-control" rows="17" id="textarea-json-object-1"></textarea>
+                    </div>
+                </div>
+                <div class="col-6 ">
+                    <div class="form-group" id="form-group-textarea-2">
+                        <label for="textarea-json-object-2">JSON object 2 :</label>
+                        <textarea class="form-control" rows="17" id="textarea-json-object-2"></textarea>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group" id="form-group-textarea-result">
+                        <label for="textarea-json-object-result">Patch result :</label>
+                        <textarea class="form-control" rows="6" id="textarea-json-object-result"></textarea>
+                    </div>
+                </div>
+                <div class="col-12 bottom">
+                    <button type="button" id="btn-create-diff" class="btn btn-outline-primary">Create patch</button>
+                    <button type="button" id="btn-reset-diff" class="btn btn-outline-info">Reset</button>
+                </div>
             </div>
         </div>
-        <div class="col-6 ">
-            <div class="form-group" id="form-group-textarea-2">
-                <label for="textarea-json-object-2">JSON object 2 :</label>
-                <textarea class="form-control" rows="17" id="textarea-json-object-2"></textarea>
+        <div role="tabpanel" class="tab-pane fade" id="validator">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group" id="form-group-textarea-object-validate">
+                        <label for="textarea-json-object-validate">JSON object :</label>
+                        <textarea class="form-control" rows="20" id="textarea-json-object-validate"></textarea>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group" id="form-group-textarea-patch-validate">
+                        <label for="textarea-json-patch-validate">JSON Patch :</label>
+                        <textarea class="form-control" rows="6" id="textarea-json-patch-validate"></textarea>
+                    </div>
+                </div>
+                <div class="col-12 bottom">
+                    <button type="button" id="btn-validate" class="btn btn-outline-primary">Validate patch</button>
+                    <button type="button" id="btn-reset-validate" class="btn btn-outline-info">Reset</button>
+                </div>
             </div>
         </div>
-        <div class="col-12">
-            <div class="form-group" id="form-group-textarea-result">
-                <label for="textarea-json-object-result">Patch result :</label>
-                <textarea class="form-control" rows="6" id="textarea-json-object-result"></textarea>
+        <div role="tabpanel" class="tab-pane fade" id="about">
+            <div class="row">
+                <div class="col-12">
+
+                </div>
             </div>
-        </div>
-        <div class="col-12 bottom">
-            <button type="button" id="btn-create-patch" class="btn btn-outline-primary">Create patch</button>
-            <button type="button" id="btn-reset" class="btn btn-outline-info">Reset</button>
         </div>
     </div>
 </div>
