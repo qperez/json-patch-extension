@@ -7,14 +7,13 @@ Because JSON is today everywhere and many developers use JSON APIs with a high-l
 <img src="http://s2.quickmeme.com/img/c4/c4083d836ddff66aadf770fddf6c865feb6c9c6db293f2ade3da3a0e5f2cf675.jpg" width="40%">
 
 The patch is often obtained by the difference of two JSON objects. However today I have no founded applications are able to do this operation, furthermore produce manually a patch can be tedious. (me when I try to create my json PATCH without librairie)
-<img src="http://ljdchost.com/XPQKnEJ.gif" width="40%">
+![Alt Text](http://ljdchost.com/XPQKnEJ.gif)
 
 The json-patcher allows to create a JSON patch with the "diff" operation between two json objects. json-patcher allows to validate a patch on a JSON object. 
 Soon, I would like to integrate the validation of a patch on JSON-LD objects with "compact" and "expand" functions.
 
 ## Try 
 
-![Alt Text](http://i.imgur.com/OUkLi.gif)
 
 
 hopefully soon...
