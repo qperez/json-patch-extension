@@ -7,7 +7,7 @@ Why the json-patcher is very cool for developers ?
 Because JSON is today everywhere and many developers use JSON APIs with a high-level of Richardson maturity model. 
 <img src="http://s2.quickmeme.com/img/c4/c4083d836ddff66aadf770fddf6c865feb6c9c6db293f2ade3da3a0e5f2cf675.jpg" width="40%">
 
-The patch is often obtained by the difference of two JSON objects. However today I have no founded applications are able to do this operation, furthermore produce manually a patch can be tedious. (the following meme is the server response I try to create my json PATCH without library)
+The patch is often obtained by the difference of two JSON objects. However today I have no founded applications are able to do this operation, furthermore produce manually a patch can be tedious. (the following meme is generally the server response when I try to create my json PATCH without library)
 
 <img src="https://www.mememaker.net/static/images/memes/4148664.jpg" width="30%">  
 
@@ -16,11 +16,11 @@ Soon, I would like to integrate the validation of a patch on JSON-LD objects wit
 
 ## Try this !
 
-You can find the json-patcher website at this address : <https://github.com/Starcounter-Jack/JSON-Patch)https://qperez.github.io/json-patcher>
+You can find the json-patcher website at this address : https://qperez.github.io/json-patcher
 
 ## Hopefully soon...
 
-Fonctionnalities to compress and expand json-ld objects directly into the patcher.
+Fonctionnalities to compress and expand json-ld objects directly into the GUI of json-patcher.
 
 ## Librairies used
 

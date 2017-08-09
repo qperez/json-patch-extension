@@ -6,7 +6,7 @@
     <!-- Bootstrap core CSS -->
     <link href="bootstrap-4.0.0-alpha6/css/bootstrap.min.css" rel="stylesheet">
     <link href="theter-1.3.3/css/tether.min.css" rel="stylesheet">
-    <link href="css/jsonls-patch-extension.css" rel="stylesheet">
+    <link href="css/json-patcher.css" rel="stylesheet">
     <link href="font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" >
 </head>
 <body>
@@ -26,19 +26,14 @@
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="patcher">
             <div class="row">
+                <div class="col-12">
+                    <hr class="my-4">
+                </div>
                 <div class="col-4">
                     <legend>JSON Options</legend>
                     <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                            JSON
-                        </label>
                     </div>
                     <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                            JSON-LD
-                        </label>
                         <div class="form-check offset-1">
                             <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input">
@@ -48,7 +43,7 @@
                         <div class="form-check offset-1">
                             <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input" id="checkbox-expand-empty">
-                                Expand (with empty context)
+                                Compact (with empty context)
                             </label>
                         </div>
                         <div class="form-check offset-1">
@@ -64,6 +59,9 @@
                         <label for="textarea-jsonld-context">New JSON-LD Context :</label>
                         <textarea class="form-control" rows="6" id="textarea-jsonld-context"></textarea>
                     </div>
+                </div>
+                <div class="col-12">
+                    <hr class="my-4">
                 </div>
                 <div class="col-6">
                     <div class="form-group" id="form-group-textarea-1">

@@ -52,7 +52,6 @@ $(document).ready(function(){
     handleTabTextArea($textarea_json_object_1);
     $textarea_json_object_1.on('input change', function(){
 
-        console.log("input change");
         validatorJSON_diff_1.validateJSON($textarea_json_object_1.val());
         if(!validatorJSON_diff_1.isValidJSON() && $textarea_json_object_1.val().length > 0){
             $("#form-control-feedback-1").remove();
@@ -70,8 +69,8 @@ $(document).ready(function(){
                     "</small>"
                 );
         }else{
-            $textarea_json_object_1.removeClass("form-control-danger");
-            $form_group_textarea_1.removeClass("has-danger");
+            $textarea_json_object_1.removeClass("form-control-danger form-control-warning");
+            $form_group_textarea_1.removeClass("has-danger has-warning");
             $("#form-control-feedback-1").remove();
             $("#form-text-1").remove();
         }
@@ -97,8 +96,8 @@ $(document).ready(function(){
                     "</small>"
                 );
         }else{
-            $textarea_json_object_2.removeClass("form-control-danger");
-            $form_group_textarea_2.removeClass("has-danger");
+            $textarea_json_object_2.removeClass("form-control-danger form-control-warning");
+            $form_group_textarea_2.removeClass("has-danger has-warning");
             $("#form-control-feedback-2").remove();
             $("#form-text-2").remove();
         }
@@ -113,17 +112,61 @@ $(document).ready(function(){
             var json_object_2   = JSON.parse($.trim($textarea_json_object_2.val()));
 
             if($checkbox_expand_empty.is(":checked")){
-                var promises = jsonld.promises;
-                var array_compacted_objects = [];
-                var promise1 = promises.compact(json_object_1, {});
-                promise1.then(function (result) {
-                    array_compacted_objects.push(result);
-                    return promises.compact(json_object_2, {});
-                }).then(function (result) {
-                    array_compacted_objects.push(result);
-                    json_patch_diff = jsonpatch.compare(array_compacted_objects[0],array_compacted_objects[1]);
-                    $textarea_json_object_result.val(JSON.stringify(json_patch_diff));
-                });
+
+                $textarea_json_object_2.removeClass("form-control-warning");
+                $form_group_textarea_2.removeClass("has-warning");
+                $("#form-control-feedback-2").remove();
+                $("#form-text-2").remove();
+
+                $textarea_json_object_1.removeClass("form-control-warning");
+                $form_group_textarea_1.removeClass("has-warning");
+                $("#form-control-feedback-1").remove();
+                $("#form-text-1").remove();
+
+                if(!json_object_1.hasOwnProperty("@context")){
+                    $("#form-control-feedback-1").remove();
+                    $("#form-text-1").remove();
+
+                    $textarea_json_object_1.addClass("form-control-warning");
+                    $form_group_textarea_1.addClass("has-warning");
+                    $form_group_textarea_1
+                        .append(
+                            "<div class='form-control-feedback' id='form-control-feedback-1'>" +
+                            "Sorry, context missing. Keep calm and add context." +
+                            "</div>" +
+                            "<small class='form-text text-muted' id='form-text-1'>" +
+                            'A context must be be specified when we use option "compact (with empty context)."' +
+                            "</small>"
+                         );
+                }else if(!json_object_2.hasOwnProperty("@context")){
+                    $("#form-control-feedback-2").remove();
+                    $("#form-text-2").remove();
+
+                    $textarea_json_object_2.addClass("form-control-warning");
+                    $form_group_textarea_2.addClass("has-warning");
+                    $form_group_textarea_2
+                        .append(
+                            "<div class='form-control-feedback' id='form-control-feedback-2'>" +
+                            "Sorry, context missing. Keep calm and add context." +
+                            "</div>" +
+                            "<small class='form-text text-muted' id='form-text-2'>" +
+                            'A context must be be specified when we use option "compact (with empty context)."' +
+                            "</small>"
+                        );
+                }else{
+                    var promises = jsonld.promises;
+                    var array_compacted_objects = [];
+                    var promise1 = promises.compact(json_object_1, {});
+                    promise1.then(function (result) {
+                        array_compacted_objects.push(result);
+                        return promises.compact(json_object_2, {});
+                    }).then(function (result) {
+                        array_compacted_objects.push(result);
+                        json_patch_diff = jsonpatch.compare(array_compacted_objects[0],array_compacted_objects[1]);
+                        $textarea_json_object_result.val(JSON.stringify(json_patch_diff));
+                    });
+                }
+
             }else{
                 json_patch_diff = jsonpatch.compare(json_object_1, json_object_2);
                 $textarea_json_object_result.val(JSON.stringify(json_patch_diff));
