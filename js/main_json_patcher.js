@@ -1,6 +1,3 @@
-/**
- * Created by qperez on 14/07/17.
- */
 function handleTabTextArea($textarea){
     $textarea.keydown(function(e) {
         if(e.keyCode === 9) { // tab was pressed
