@@ -1,4 +1,5 @@
-# json-patch-extension
+# json-patcher
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 A website and a repository to create JSON Patch easily when we use JSON.  
 Why the json-patcher is very cool for developers ?  

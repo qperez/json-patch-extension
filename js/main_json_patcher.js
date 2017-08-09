@@ -45,6 +45,8 @@ $(document).ready(function(){
     var $button_validate       = $("#btn-validate");
     var $button_reset_validate = $("#btn-reset-validate");
 
+    var $checkbox_expand_empty = $("#checkbox-expand-empty");
+
     var validatorJSON_diff_1 = new ValidatorJSON();
     var validatorJSON_diff_2 = new ValidatorJSON();
     var validatorJSON_validate_1 = new ValidatorJSON();
@@ -53,6 +55,7 @@ $(document).ready(function(){
     handleTabTextArea($textarea_json_object_1);
     $textarea_json_object_1.on('input change', function(){
 
+        console.log("input change");
         validatorJSON_diff_1.validateJSON($textarea_json_object_1.val());
         if(!validatorJSON_diff_1.isValidJSON() && $textarea_json_object_1.val().length > 0){
             $("#form-control-feedback-1").remove();
@@ -63,10 +66,10 @@ $(document).ready(function(){
             $form_group_textarea_1
                 .append(
                     "<div class='form-control-feedback' id='form-control-feedback-1'>" +
-                        "Sorry, the JSON object is invalid. Keep calm and try again." +
+                    "Sorry, the JSON object is invalid. Keep calm and try again." +
                     "</div>" +
                     "<small class='form-text text-muted' id='form-text-1'>" +
-                        validatorJSON_diff_1.getStringError() +
+                    validatorJSON_diff_1.getStringError() +
                     "</small>"
                 );
         }else{
@@ -90,12 +93,12 @@ $(document).ready(function(){
             $form_group_textarea_2
                 .append(
                     "<div class='form-control-feedback' id='form-control-feedback-2'>" +
-                        "Sorry, the JSON object is invalid. Keep calm and try again." +
+                    "Sorry, the JSON object is invalid. Keep calm and try again." +
                     "</div>" +
                     "<small class='form-text text-muted' id='form-text-2'>" +
-                        validatorJSON_diff_2.getStringError() +
+                    validatorJSON_diff_2.getStringError() +
                     "</small>"
-            );
+                );
         }else{
             $textarea_json_object_2.removeClass("form-control-danger");
             $form_group_textarea_2.removeClass("has-danger");
@@ -105,14 +108,32 @@ $(document).ready(function(){
     });
 
     $button_create_patch.on('click', function () {
+
         if(validatorJSON_diff_1.isValidJSON() && validatorJSON_diff_2.isValidJSON()){
-            var json_patch_diff = jsonpatch.compare(JSON.parse($.trim($textarea_json_object_1.val())),
-                JSON.parse($.trim($textarea_json_object_2.val())));
-            $textarea_json_object_result.val(JSON.stringify(json_patch_diff));
-            console.log(new ValidatorJSON().validateJSON(JSON.stringify(json_patch_diff)));
+
+            var json_patch_diff = null;
+            var json_object_1   = JSON.parse($.trim($textarea_json_object_1.val()));
+            var json_object_2   = JSON.parse($.trim($textarea_json_object_2.val()));
+
+            if($checkbox_expand_empty.is(":checked")){
+                var promises = jsonld.promises;
+                var array_compacted_objects = [];
+                var promise1 = promises.compact(json_object_1, {});
+                promise1.then(function (result) {
+                    array_compacted_objects.push(result);
+                    return promises.compact(json_object_2, {});
+                }).then(function (result) {
+                    array_compacted_objects.push(result);
+                    json_patch_diff = jsonpatch.compare(array_compacted_objects[0],array_compacted_objects[1]);
+                    $textarea_json_object_result.val(JSON.stringify(json_patch_diff));
+                });
+            }else{
+                json_patch_diff = jsonpatch.compare(json_object_1, json_object_2);
+                $textarea_json_object_result.val(JSON.stringify(json_patch_diff));
+            }
         }
     });
-    
+
     $button_reset.on('click', function () {
         $textarea_json_object_1.val("");
         $textarea_json_object_2.val("");
@@ -189,6 +210,7 @@ $(document).ready(function(){
                 $textarea_json_patch_validate.addClass("form-control-success");
                 $form_group_textarea_patch_validate.removeClass("has-danger");
                 $form_group_textarea_patch_validate.addClass("has-success");
+
             }
             else {
                 $("#form-control-feedback-patch-validate-result").remove();
