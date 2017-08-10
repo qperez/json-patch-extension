@@ -10,25 +10,35 @@
     <link href="font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" >
 </head>
 <body>
+<nav class="navbar fixed-top navbar-toggleable navbar-inverse navbar-json-patcher">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">JSON-PATCHER</a>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="nav-content">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="#patcher" role="tab" data-toggle="tab">Patch diff</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#validator" role="tab" data-toggle="tab">Patch validation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#about" role="tab" data-toggle="tab">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 <div class="container">
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" href="#patcher" role="tab" data-toggle="tab">Patch diff</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#validator" role="tab" data-toggle="tab">Patch validation</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#about" role="tab" data-toggle="tab">About</a>
-        </li>
-    </ul>
     <!-- Tab panes -->
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="patcher">
             <div class="row">
-                <div class="col-12">
-                    <hr class="my-4">
-                </div>
                 <div class="col-4">
                     <legend>JSON Options</legend>
                     <div class="form-check">
@@ -36,21 +46,21 @@
                     <div class="form-check">
                         <div class="form-check offset-1">
                             <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input">
+                                <input type="checkbox" class="form-check-input disabled">
                                 Compact
-                            </label>
+                            </label><span class="offset-1 badge badge-primary">Soon</span>
                         </div>
                         <div class="form-check offset-1">
                             <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input" id="checkbox-expand-empty">
                                 Compact (with empty context)
-                            </label>
+                            </label> <span class="offset-1 badge badge-success">Work</span>
                         </div>
                         <div class="form-check offset-1">
                             <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input">
+                                <input type="checkbox" class="form-check-input disabled">
                                 Expand
-                            </label>
+                            </label><span class="offset-1 badge badge-primary">Soon</span>
                         </div>
                     </div>
                 </div>
@@ -111,14 +121,17 @@
         <div role="tabpanel" class="tab-pane fade" id="about">
             <div class="row">
                 <div class="col-12">
-
+                    JSON-PATCHER is a graphic tool to create easely json patch. JSON patcher is licenced with GNU GPL v.3. <br>
+                    For more informations about technologies used or other, see here : <a href="https://github.com/qperez/json-patcher">https://github.com/qperez/json-patcher</a>
+                    <br><br>
+                    Personal website : <a href="https://lifeunderconstruction.fr">https://lifeunderconstruction.fr</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <footer class="footer">
-    <div class="container text-center">
+    <div class="container-footer text-center">
         <span class="text-muted"><a id="href-github" target="_blank" href="https://github.com/qperez/json-patch-extension"><i class="fa fa-github" aria-hidden="true"></i></a> Json-patcher website
             (GNU General Public License v3.0). Created  by Quentin PEREZ.</span>
     </div>
