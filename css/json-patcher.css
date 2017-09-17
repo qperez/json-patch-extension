@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'existencelight';
+    src: url("../resources/fonts/existence-light-webfont.woff2") format('woff2'),
+    url("../resources/fonts/existence-light-webfont.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html {
     overflow: auto;
 }
@@ -6,6 +14,10 @@ body{
     height: 100%;
     margin: 0;
     background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%) no-repeat fixed;
+    background-image: url("../resources/img/background-triangle.png");
+    background-image: url("../resources/img/background-triangle.png"), linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    background-repeat: repeat;
+    background-size: auto;
 }
 
 .scroll-col-6 {
@@ -57,4 +69,33 @@ hr {
     background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%) no-repeat fixed;
     border-bottom: 2px solid white;
     border-top: 2px solid white;
+}
+
+.color-grey-modal{
+    background-color: #fcfcfc;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("../resources/img/subtle-grey.png");
+
+    /* Set a specific height */
+    height: 100px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: inherit;
+    background-repeat: repeat;
+    background-size: auto;
+}
+
+.text-title{
+    font-family: existencelight;
+    font-size:3.5em;
+    text-align: center;
+}
+
+.text{
+    font-family: existencelight;
+    font-weight: bolder;
 }
