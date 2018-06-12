@@ -42,7 +42,7 @@
                 <div class="col-12 parallax text-title">
                     <i class="fa fa-files-o" aria-hidden="true"></i> Patch diff
                 </div>
-                <div class="col-4">
+                <div class="col-6">
                     <legend>JSON Options</legend>
                     <div class="form-check">
                     </div>
@@ -50,20 +50,20 @@
                         <div class="form-check offset-1">
                             <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input disabled">
-                                Compact
-                            </label><span class="offset-1 badge badge-primary">Soon</span>
+                                Compact and patch
+                            </label><span class="offset-1 badge badge-success">Work</span>
                         </div>
                         <div class="form-check offset-1">
                             <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input" id="checkbox-expand-empty">
-                                Compact (with empty context)
+                                Compact (with empty context) and patch
                             </label> <span class="offset-1 badge badge-success">Work</span>
                         </div>
                         <div class="form-check offset-1">
                             <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input disabled">
-                                Expand
-                            </label><span class="offset-1 badge badge-primary">Soon</span>
+                                <input type="checkbox" class="form-check-input" id="checkbox-expand">
+                                Expand and patch
+                            </label><span class="offset-1 badge badge-success">Work</span>
                         </div>
                     </div>
                 </div>
@@ -79,25 +79,36 @@
                 <div class="col-6">
                     <div class="form-group" id="form-group-textarea-1">
                         <label for="textarea-json-object-1">JSON object 1 :</label>
+                        <div id="textarea-json-object-1"></div>
+<!--
                         <textarea class="form-control" rows="17" id="textarea-json-object-1"></textarea>
+-->
                     </div>
                 </div>
                 <div class="col-6 ">
                     <div class="form-group" id="form-group-textarea-2">
                         <label for="textarea-json-object-2">JSON object 2 :</label>
+<!--
                         <textarea class="form-control" rows="17" id="textarea-json-object-2"></textarea>
+-->
+                        <div id="textarea-json-object-2"></div>
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="form-group" id="form-group-textarea-result">
                         <label for="textarea-json-object-result">Patch result :</label>
-                        <textarea class="form-control" rows="6" id="textarea-json-object-result"></textarea>
+                        <div id="textarea-json-object-result"></div>
+                        <!--
+                                                <textarea class="form-control" rows="6" id="textarea-json-object-result"></textarea>
+                        -->
                     </div>
                 </div>
-                <div class="col-12 bottom">
-                    <button type="button" id="btn-create-diff" class="btn btn-outline-primary">Create patch</button>
-                    <button type="button" id="btn-reset-diff" class="btn btn-outline-info">Reset</button>
+                <div class="col-12">
+                    <div class="row justify-content-center">
+                        <button id="btn-create-diff" class="btn-1 button"><span>Create patch</span></button>
+                        <button id="btn-reset-diff" class="btn-1 button"><span>Reset</span></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -154,4 +165,5 @@
 <script src="js/validator_JSON.js"></script>
 <script src="js/dist/fast-json-patch.min.js"></script>
 <script src="js/main_json_patcher.js"></script>
+<script src="js/dist/ace.js"></script>
 </html>

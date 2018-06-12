@@ -12,7 +12,7 @@ The patch is often obtained by the difference of two JSON objects. However today
 <img src="https://www.mememaker.net/static/images/memes/4148664.jpg" width="30%">  
 
 The json-patcher allows to create a JSON patch with the "diff" operation between two json objects. json-patcher allows to validate a patch on a JSON object. 
-Soon, I would like to integrate the validation of a patch on JSON-LD objects with "compact" and "expand" functions.
+Soon, I would like to integrate the validation of a patch on JSON-LD objects with "compact" and "expand" functions. (But it works Now ;) 
 
 ## Try this !
 
@@ -20,7 +20,7 @@ You can find the json-patcher website at this address : https://qperez.github.io
 
 ## Hopefully soon...
 
-Fonctionnalities to compress and expand json-ld objects directly into the GUI of json-patcher.
+Fonctionnalities to compress and expand json-ld objects directly into the GUI of json-patcher. (DONE ! :D )
 
 ## Librairies used
 
@@ -28,6 +28,7 @@ The json-patch-extension uses these following libraries and frameworks :
 * [fast-JSON-Patch](https://github.com/Starcounter-Jack/JSON-Patch)
 * [jsonldjs](https://github.com/digitalbazaar/jsonld.js)
 * [Bootstrap 4 alpha](https://v4-alpha.getbootstrap.com)
+* [Ace editor](https://ace.c9.io/)
 
 ## Licence 
 

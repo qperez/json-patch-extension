@@ -1,5 +1,5 @@
 function handleTabTextArea($textarea){
-    $textarea.keydown(function(e) {
+    /*$textarea.keydown(function(e) {
         if(e.keyCode === 9) { // tab was pressed
             // get caret position/selection
             var start = this.selectionStart;
@@ -19,7 +19,7 @@ function handleTabTextArea($textarea){
             // prevent the focus lose
             e.preventDefault();
         }
-    });
+    });*/
 }
 
 $(document).ready(function(){
@@ -43,13 +43,14 @@ $(document).ready(function(){
     var $button_reset_validate = $("#btn-reset-validate");
 
     var $checkbox_expand_empty = $("#checkbox-expand-empty");
+    var $checkbox_expand       = $("#checkbox-expand");
 
     var validatorJSON_diff_1 = new ValidatorJSON();
     var validatorJSON_diff_2 = new ValidatorJSON();
     var validatorJSON_validate_1 = new ValidatorJSON();
     var validatorJSON_validate_2 = new ValidatorJSON();
 
-    handleTabTextArea($textarea_json_object_1);
+    /*handleTabTextArea($textarea_json_object_1);
     $textarea_json_object_1.on('input change', function(){
 
         validatorJSON_diff_1.validateJSON($textarea_json_object_1.val());
@@ -101,15 +102,39 @@ $(document).ready(function(){
             $("#form-control-feedback-2").remove();
             $("#form-text-2").remove();
         }
-    });
+    });*/
+
+    var editor_object1 = ace.edit("textarea-json-object-1");
+    editor_object1.setTheme("ace/theme/clouds");
+    editor_object1.getSession().setMode("ace/mode/json");
+    editor_object1.setAutoScrollEditorIntoView(true);
+    editor_object1.setOption("maxLines", 30);
+    editor_object1.setOption("minLines", 30);
+
+    var editor_object2 = ace.edit("textarea-json-object-2");
+    editor_object2.setTheme("ace/theme/clouds");
+    editor_object2.getSession().setMode("ace/mode/json");
+    editor_object2.setAutoScrollEditorIntoView(true);
+    editor_object2.setOption("maxLines", 30);
+    editor_object2.setOption("minLines", 30);
+
+    var editor_object3 = ace.edit("textarea-json-object-result");
+    editor_object3.setTheme("ace/theme/clouds");
+    editor_object3.getSession().setMode("ace/mode/json");
+    editor_object3.session.setUseWrapMode(true);
+    editor_object3.setAutoScrollEditorIntoView(true);
+    editor_object3.setOption("maxLines", 30);
+    editor_object3.setOption("minLines", 10);
+    editor_object3.setReadOnly(true);
+    editor_object3.setHighlightActiveLine(false);
 
     $button_create_patch.on('click', function () {
 
-        if(validatorJSON_diff_1.isValidJSON() && validatorJSON_diff_2.isValidJSON()){
+        //if(validatorJSON_diff_1.isValidJSON() && validatorJSON_diff_2.isValidJSON()){
 
             var json_patch_diff = null;
-            var json_object_1   = JSON.parse($.trim($textarea_json_object_1.val()));
-            var json_object_2   = JSON.parse($.trim($textarea_json_object_2.val()));
+            var json_object_1   = JSON.parse($.trim(editor_object1.getValue()));
+            var json_object_2   = JSON.parse($.trim(editor_object2.getValue()));
 
             if($checkbox_expand_empty.is(":checked")){
 
@@ -135,7 +160,7 @@ $(document).ready(function(){
                             "Sorry, context missing. Keep calm and add context." +
                             "</div>" +
                             "<small class='form-text text-muted' id='form-text-1'>" +
-                            'A context must be be specified when we use option "compact (with empty context)."' +
+                            'A context must be specified when we use option "compact (with empty context)."' +
                             "</small>"
                          );
                 }else if(!json_object_2.hasOwnProperty("@context")){
@@ -150,7 +175,7 @@ $(document).ready(function(){
                             "Sorry, context missing. Keep calm and add context." +
                             "</div>" +
                             "<small class='form-text text-muted' id='form-text-2'>" +
-                            'A context must be be specified when we use option "compact (with empty context)."' +
+                            'A context must be specified when we use option "compact (with empty context)."' +
                             "</small>"
                         );
                 }else{
@@ -163,27 +188,46 @@ $(document).ready(function(){
                     }).then(function (result) {
                         array_compacted_objects.push(result);
                         json_patch_diff = jsonpatch.compare(array_compacted_objects[0],array_compacted_objects[1]);
-                        $textarea_json_object_result.val(JSON.stringify(json_patch_diff));
+                        //$textarea_json_object_result.val(JSON.stringify(json_patch_diff));
+                        editor_object3.setValue(JSON.stringify(json_patch_diff));
                     });
                 }
 
+            }else if($checkbox_expand.is(":checked")){
+                var promises = jsonld.promises;
+                var array_expanded_objects = [];
+                var promise1 = promises.expand(json_object_1);
+                promise1.then(function (result) {
+                    array_expanded_objects.push(result);
+                    return promises.expand(json_object_2);
+                }).then(function (result) {
+                    array_expanded_objects.push(result);
+                    json_patch_diff = jsonpatch.compare(array_expanded_objects[0],array_expanded_objects[1]);
+                    editor_object3.setValue(JSON.stringify(json_patch_diff));
+                    //$textarea_json_object_result.val(JSON.stringify(json_patch_diff));
+                });
             }else{
                 json_patch_diff = jsonpatch.compare(json_object_1, json_object_2);
-                $textarea_json_object_result.val(JSON.stringify(json_patch_diff));
+                editor_object3.setValue(JSON.stringify(json_patch_diff));
+                //$textarea_json_object_result.val(JSON.stringify(json_patch_diff));
             }
-        }
+        //}
     });
 
     $button_reset.on('click', function () {
-        $textarea_json_object_1.val("");
+        /*$textarea_json_object_1.val("");
         $textarea_json_object_2.val("");
-        $textarea_json_object_result.val("");
+        $textarea_json_object_result.val("");*/
         $textarea_json_object_1.trigger("change");
         $textarea_json_object_2.trigger("change");
+        editor_object1.setValue("");
+        editor_object2.setValue("");
+        editor_object3.setValue("");
     });
 
     handleTabTextArea($textarea_json_object_validate);
     $textarea_json_object_validate.on('input change', function(){
+
         validatorJSON_validate_1.validateJSON($textarea_json_object_validate.val());
         if(!validatorJSON_validate_1.isValidJSON() && $textarea_json_object_validate.val().length > 0){
             $("#form-control-feedback-patch-object").remove();
